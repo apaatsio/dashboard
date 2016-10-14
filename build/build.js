@@ -251,9 +251,9 @@ function createFrontendCopies(outputDirs) {
 function doRevision() {
   // Do not update references other than in index.html. Do not rev index.html itself.
   let revAll =
-      new GulpRevAll({dontRenameFile: ['index.html'], dontSearchFile: [/^(?!.*index\.html$).*$/]});
+      new GulpRevAll.revision({dontRenameFile: ['index.html'], dontSearchFile: [/^(?!.*index\.html$).*$/]});
   return gulp.src([path.join(conf.paths.distPre, '**'), '!**/assets/**/*'])
-      .pipe(revAll.revision())
+      .pipe(revAll)
       .pipe(gulp.dest(conf.paths.distRoot));
 }
 
