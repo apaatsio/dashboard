@@ -20,7 +20,7 @@ import gulp from 'gulp';
 import gulpUrlAdjuster from 'gulp-css-url-adjuster';
 import gulpHtmlmin from 'gulp-htmlmin';
 import gulpIf from 'gulp-if';
-import gulpMinifyCss from 'gulp-minify-css';
+import gulpCleanCss from 'gulp-clean-css';
 import GulpRevAll from 'gulp-rev-all';
 import gulpUglify from 'gulp-uglify';
 import gulpUseref from 'gulp-useref';
@@ -217,7 +217,7 @@ function createFrontendCopies(outputDirs) {
       .pipe(gulpUseref({searchPath: searchPath}))
       .pipe(gulpIf(
           '**/vendor.css',
-          gulpMinifyCss({rebase: true, relativeTo: conf.paths.tmp, target: conf.paths.tmp})))
+          gulpCleanCss({rebase: true, relativeTo: conf.paths.tmp, target: conf.paths.tmp})))
       .pipe(gulpIf('**/vendor.css', gulpUrlAdjuster({
                      // Replace invalid prefix that is added to resolved URLs.
                      replace: ['prod/static/', ''],

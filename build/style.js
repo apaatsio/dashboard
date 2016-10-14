@@ -18,7 +18,7 @@
 import gulp from 'gulp';
 import gulpAutoprefixer from 'gulp-autoprefixer';
 import gulpConcat from 'gulp-concat';
-import gulpMinifyCss from 'gulp-minify-css';
+import gulpCleanCss from 'gulp-clean-css';
 import gulpSass from 'gulp-sass';
 import gulpSourcemaps from 'gulp-sourcemaps';
 import path from 'path';
@@ -59,7 +59,7 @@ gulp.task('styles:prod', function() {
       .pipe(gulpSass(sassOptions))
       .pipe(gulpAutoprefixer())
       .pipe(gulpConcat('app.css'))
-      .pipe(gulpMinifyCss({
+      .pipe(gulpCleanCss({
         // Do not process @import statements. This breaks Angular Material font icons.
         processImport: false,
       }))
